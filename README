@@ -1,0 +1,137 @@
+# FeelFriend
+
+FeelFriend is a friendly chatbot web app that helps students with emotional and mental health support. It uses Google’s Gemini AI to chat with users in a kind, supportive way. You can talk to it like a friend, ask questions, or just share how you feel. It also has a BMI calculator that gives you a meal plan based on your BMI.
+
+---
+
+## Features
+
+- **Chatbot:**  
+  Talk to an AI that listens and responds like a caring friend. It’s designed to be supportive, empathetic, and helpful for students.
+
+- **BMI Calculator:**  
+  Enter your weight and height, and the app will calculate your BMI and suggest a meal plan just for you.
+
+- **Image Upload (Demo):**  
+  You can upload an image and ask the AI to describe it (for demo/testing).
+
+- **Text Streaming:**  
+  The app can stream AI-generated text responses in real-time.
+
+---
+
+## How It Works
+
+- The backend is built with **Node.js** and **Express**.
+- It uses the **@google/generative-ai** package to connect to Google Gemini AI.
+- The frontend is a simple web page with a chat interface.
+- All user messages are sent to the server, which talks to Gemini AI and sends back the response.
+- The BMI calculator and image upload are handled by separate API routes.
+
+---
+
+## Project Structure
+
+```
+FeelFriend/
+│
+├── .env                  # Your API keys and secrets (not shared)
+├── .gitignore            # Files and folders to ignore in git
+├── package.json          # Project dependencies and scripts
+├── server.js             # Main server file (image upload demo)
+├── server_bmi.js         # Server for BMI calculation and meal plan
+├── server_interactive_chat.js # Main chatbot server
+├── server_text_stream.js # Server for streaming text responses
+├── vercel.json           # Vercel deployment config
+│
+└── public/
+    ├── index.html        # The main web page
+    ├── script.js         # Frontend JavaScript (handles chat)
+    └── style.css         # Styles for the chat UI
+```
+
+---
+
+## How To Run
+
+1. **Install Node.js**  
+   Make sure you have Node.js installed on your computer.
+
+2. **Install Dependencies**  
+   Open a terminal in the project folder and run:
+
+   ```sh
+   npm install
+   ```
+
+3. **Set Up API Key**
+
+   - Create a `.env` file in the root folder.
+   - Add your Google Gemini API key:
+     ```
+     API_KEY=your_google_gemini_api_key_here
+     ```
+
+4. **Start the Server**  
+   Run this command to start the chatbot server:
+
+   ```sh
+   npm start
+   ```
+
+   The app will run at [http://localhost:3000](http://localhost:3000).
+
+5. **Open in Browser**  
+   Go to [http://localhost:3000](http://localhost:3000) to use the chat.
+
+---
+
+## API Endpoints
+
+- `GET /`  
+  Shows the chat web page.
+
+- `GET /chat?message=your_message`  
+  Send a message to the chatbot and get a response.
+
+- `POST /calculate-bmi`  
+  Send `{ "weight": ..., "height": ... }` in JSON to get your BMI and a meal plan.
+
+- `POST /upload`  
+  Upload an image and a prompt to get a description (demo).
+
+- `POST /api/stream`  
+  Stream AI-generated text responses (demo).
+
+---
+
+## Deployment
+
+- The app is ready to deploy on [Vercel](https://vercel.com/).
+- The `vercel.json` file tells Vercel to use `server_interactive_chat.js` as the main server.
+
+---
+
+## Notes
+
+- Your `.env` file should **never** be shared or uploaded to GitHub.
+- The AI is designed to be supportive, but it’s not a replacement for professional help.
+- The BMI and meal plan feature is for general advice only.
+
+---
+
+## Credits
+
+- Built by Prince.
+- Uses [Google Generative AI](https://ai.google.dev/).
+- Frontend uses [marked.js](https://marked.js.org/) for Markdown support.
+
+---
+
+## License
+
+This project is licensed under the ISC License.
+
+---
+
+\*\*Enjoy chatting with FeelFriend! If you have any questions or ideas, feel free to improve
